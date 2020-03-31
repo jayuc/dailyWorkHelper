@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github.jayuc</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>dailyWorkHelper</artifactId>
 	<version>0.0.1</version>
-	<name>demo</name>
+	<name>dailyWorkHelper</name>
 	<description></description>
 
 	<properties>
