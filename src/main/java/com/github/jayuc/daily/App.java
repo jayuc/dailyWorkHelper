@@ -1,4 +1,4 @@
-package com.github.jayuc.demo;
+package com.github.jayuc.daily;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

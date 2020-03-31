@@ -1,4 +1,4 @@
-package com.github.jayuc.demo;
+package com.github.jayuc.daily;
 
 import org.junit.After;
 import org.junit.Before;
