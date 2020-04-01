@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by 余杰 on 2020/3/31 12:05
@@ -23,7 +24,8 @@ public class SimulateDataToRedis {
 
         RealTimeCrossFlow.CrossFlowValue crossFlowValue = new RealTimeCrossFlow.CrossFlowValue();
         crossFlowValue.setFlowTime(new Date());
-        crossFlowValue.setTotal(102);
+        crossFlowValue.setTotal(generateRandomInteger(10000));
+        crossFlowValue.setLstBranchFlow(getBranchFlowList());
 
         List<String> lstRoadId = new ArrayList<>();
         lstRoadId.add("16987");
@@ -41,6 +43,8 @@ public class SimulateDataToRedis {
 
         toRedis(realTimeCrossFlow);
 //        System.out.println(RedisUtils.hget("RealTimeCrossFlow", "2401bab9157749d9b380848184e62767"));
+
+//        generateRandomInteger(1000);
     }
 
     static void toRedis(Object object){
@@ -69,11 +73,29 @@ public class SimulateDataToRedis {
         return "get" + firstStr.toUpperCase() + endStr;
     }
 
+    static List<RealTimeCrossFlow.BranchFlowValue> getBranchFlowList(){
+        List<RealTimeCrossFlow.BranchFlowValue> list = new ArrayList<>();
+        list.add(getBranchFlow("东进口", generateRandomInteger(1000)));
+        list.add(getBranchFlow("西进口", generateRandomInteger(1000)));
+        list.add(getBranchFlow("南进口", generateRandomInteger(1000)));
+        list.add(getBranchFlow("北进口", generateRandomInteger(1000)));
+        return list;
+    }
+
+    static RealTimeCrossFlow.BranchFlowValue getBranchFlow(String name, int total){
+        RealTimeCrossFlow.BranchFlowValue branchFlowValue = new RealTimeCrossFlow.BranchFlowValue();
+        branchFlowValue.setBranchName(name);
+        branchFlowValue.setBranchTypeName(name);
+        branchFlowValue.setTotal(total);
+        branchFlowValue.setLstTurnFlow(getTurnFlowList());
+        return branchFlowValue;
+    }
+
     static List<RealTimeCrossFlow.TurnFlowValue> getTurnFlowList(){
         List<RealTimeCrossFlow.TurnFlowValue> list = new ArrayList<>();
-        list.add(getTurnFlow("左转", 11));
-        list.add(getTurnFlow("直行", 16));
-        list.add(getTurnFlow("右转", 21));
+        list.add(getTurnFlow("左转", generateRandomInteger(100)));
+        list.add(getTurnFlow("直行", generateRandomInteger(100)));
+        list.add(getTurnFlow("右转", generateRandomInteger(100)));
         return list;
     }
 
@@ -82,6 +104,12 @@ public class SimulateDataToRedis {
         turnFlowValue.setTurnTypeName(name);
         turnFlowValue.setTotal(total);
         return turnFlowValue;
+    }
+
+    // bound 表示范围， 例如：100   表示在 0 到 100之间的数
+    static int generateRandomInteger(int bound){
+        Random random = new Random();
+        return random.nextInt(bound);
     }
 
 }
