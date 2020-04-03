@@ -17,12 +17,14 @@ import java.util.List;
 public class RealTimeCrossFlow {
     private String crossId;
     private String crossName;
+    private String orgName;
     private String lonLat;
     private List<String> lstRoadId;
     private String orgPrivCode;
     private String crossShapeName;
     private String lightCtrlTypeName;
     private CrossFlowValue crossFlow1H;
+    private List<CrossFlowValue> lstCrossFlow15m1d;
 
     @Data
     public static class CrossFlowValue{
