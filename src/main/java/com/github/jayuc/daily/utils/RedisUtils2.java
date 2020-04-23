@@ -1,8 +1,5 @@
 package com.github.jayuc.daily.utils;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.jayuc.daily.config.RedisConfig;
 import com.github.jayuc.daily.iter.FastJsonRedisSerializer;
 import org.slf4j.Logger;
@@ -11,7 +8,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.CollectionUtils;
@@ -26,16 +22,16 @@ import java.util.concurrent.TimeUnit;
  * Created by 余杰 on 2020/3/31 12:12
  */
 
-public class RedisUtils {
+public class RedisUtils2 {
 
     private static RedisTemplate<String, Object> redisTemplate;
 
-    private static Logger logger = LoggerFactory.getLogger(RedisUtils.class);
+    private static Logger logger = LoggerFactory.getLogger(RedisUtils2.class);
 
     static {
         if(redisTemplate == null){
             RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-            redisStandaloneConfiguration.setHostName(RedisConfig.HOST);
+            redisStandaloneConfiguration.setHostName("192.168.10.230");
             redisStandaloneConfiguration.setPort(RedisConfig.PORT);
             redisStandaloneConfiguration.setPassword(RedisConfig.PASSWORD);
             redisStandaloneConfiguration.setDatabase(RedisConfig.INDEX);
@@ -169,11 +165,6 @@ public class RedisUtils {
             throw new RuntimeException("递增因子必须大于0");
         }
         return redisTemplate.opsForValue().increment(key, delta);
-    }
-
-    public static int getHashLen(){
-//        redisTemplate.opsForHash()
-        return 0;
     }
 
     /**
