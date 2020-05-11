@@ -12,14 +12,27 @@ import java.util.concurrent.TimeUnit;
 public class ForkJoinApp {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        FetchImageTask fetchImageTask = new FetchImageTask(10);
+        FetchImageTask fetchImageTask = new FetchImageTask(3);
 
 //        singleThreadExecute(fetchImageTask);
 
-        forkJoinExecute(fetchImageTask);
+//        forkJoinExecute(fetchImageTask);
+
+        forkJoinAction(fetchImageTask);
 
         long end = System.currentTimeMillis();
         System.out.println("此次耗时: ==> " + (end - start));
+    }
+
+    static void forkJoinAction(FetchImageTask fetchImageTask){
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        FetchImageForkJoinAction fetchImageForkJoinTask = new FetchImageForkJoinAction(fetchImageTask.getList());
+        forkJoinPool.submit(fetchImageForkJoinTask);
+        try {
+            forkJoinPool.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     static void forkJoinExecute(FetchImageTask fetchImageTask){

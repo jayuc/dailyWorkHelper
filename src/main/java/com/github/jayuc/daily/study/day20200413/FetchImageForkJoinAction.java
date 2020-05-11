@@ -1,30 +1,25 @@
 package com.github.jayuc.daily.study.day20200413;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.RecursiveTask;
 
 /**
- * Created by 余杰 on 2020/5/7 14:10
+ * Created by 余杰 on 2020/5/7 16:50
  */
 
-public class FetchImageForkJoinTask extends RecursiveTask<Integer> {
-    private List<FetchImage> list = new ArrayList<>();
+public class FetchImageForkJoinAction extends RecursiveAction {
+    private List<FetchImage> list;
 
-    public FetchImageForkJoinTask(List<FetchImage> list) {
-//        System.out.println("FetchImageForkJoinTask construct ...");
+    public FetchImageForkJoinAction(List<FetchImage> list) {
         this.list = list;
     }
 
     @Override
-    protected Integer compute() {
-//        System.out.println(Thread.currentThread().getName() + " ----------- " + list.size());
+    protected void compute() {
         int size = list.size();
         if(size == 1){
             System.out.println("---------------------> 执行了 ==> " + list.size());
             list.get(0).fetch();
-            return 1;
         }else if (size > 1){
             int middle = size/2;
             List<FetchImage> preList = list.subList(0, middle);
@@ -33,8 +28,6 @@ public class FetchImageForkJoinTask extends RecursiveTask<Integer> {
             FetchImageForkJoinTask lastTask = new FetchImageForkJoinTask(lastList);
             preTask.fork();
             lastTask.fork();
-            return preTask.join() + lastTask.join();
         }
-        return 0;
     }
 }
