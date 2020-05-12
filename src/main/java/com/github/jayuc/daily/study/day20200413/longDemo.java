@@ -1,5 +1,8 @@
 package com.github.jayuc.daily.study.day20200413;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by 余杰 on 2020/4/18 16:54
  */
@@ -25,6 +28,8 @@ public class longDemo {
         int c = ((Long)l).intValue();
 
         System.out.println(c);
+
+        Map map = new HashMap();
     }
 
 

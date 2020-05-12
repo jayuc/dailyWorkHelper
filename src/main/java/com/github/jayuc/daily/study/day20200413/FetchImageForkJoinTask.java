@@ -10,7 +10,7 @@ import java.util.concurrent.RecursiveTask;
  */
 
 public class FetchImageForkJoinTask extends RecursiveTask<Integer> {
-    private List<FetchImage> list = new ArrayList<>();
+    private List<FetchImage> list = new ArrayList<FetchImage>();
 
     public FetchImageForkJoinTask(List<FetchImage> list) {
 //        System.out.println("FetchImageForkJoinTask construct ...");
