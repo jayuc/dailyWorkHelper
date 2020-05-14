@@ -1,4 +1,4 @@
-package com.github.jayuc.daily.study;
+package com.github.jayuc.daily.study.day20200413;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
