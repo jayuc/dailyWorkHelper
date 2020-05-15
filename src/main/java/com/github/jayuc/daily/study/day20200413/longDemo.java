@@ -19,18 +19,32 @@ public class longDemo {
         long d = 1587200227717L;
         long curr = System.currentTimeMillis();
 
-        System.out.println(curr - d);
-
-        System.out.println(o);
+//        System.out.println(curr - d);
+//
+//        System.out.println(o);
 
 
         long l = (curr - d) / (24*60*60*1000);
         int c = ((Long)l).intValue();
 
-        System.out.println(c);
+//        System.out.println(c);
 
         Map map = new HashMap();
+
+        Runnable note = longDemo::note;
+        note.run();
+
+        longDemo longDemo = new longDemo();
+        MyRunable show = longDemo::show;
+        show.show();
     }
 
+    static void note(){
+        System.out.println("do execute note ...");
+    }
+
+    void show(){
+        System.out.println("do show function ...");
+    }
 
 }

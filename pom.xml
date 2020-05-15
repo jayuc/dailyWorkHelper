@@ -63,6 +63,14 @@
             <version>1.2.57</version>
         </dependency>
 
+        <!-- mybatis相关依赖 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <!--<version>3.5.0-SNAPSHOT</version>-->
+            <version>3.5.1</version>
+        </dependency>
+
 		<!-- 热部署插件 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
