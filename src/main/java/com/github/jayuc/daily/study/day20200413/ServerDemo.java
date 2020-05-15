@@ -43,4 +43,8 @@ public class ServerDemo {
 
     }
 
+    <T> T note(){
+        return null;
+    }
+
 }
