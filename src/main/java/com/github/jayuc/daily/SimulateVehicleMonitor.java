@@ -47,21 +47,32 @@ public class SimulateVehicleMonitor {
 
         Random random = new Random();
 
+        final String pass_key = "its_pass_vehicle";
+        final String vehicle_key = "its_vehicle_alarm_info";
+
+        int condition = 0;
+
         while (true){
             int i = random.nextInt(10);
-            sendMessage(i);
+            String key = pass_key;
+            if(condition > 5){
+                key = vehicle_key;
+                condition = 0;
+            }
+            sendMessage(key, i);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            condition++;
         }
 
     }
 
-    static void sendMessage(int index){
+    static void sendMessage(String routingKey, int index){
 
-        Boolean b = MQGateWay.publish("its_pass_vehicle", list.get(index));
+        Boolean b = MQGateWay.publish(routingKey, list.get(index));
 
         System.out.println("发送成功 ==>" + b);
     }
