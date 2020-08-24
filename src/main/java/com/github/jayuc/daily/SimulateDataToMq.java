@@ -18,7 +18,7 @@ public class SimulateDataToMq {
         }
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -63,10 +63,19 @@ public class SimulateDataToMq {
                 "\"transferDelay\":-31709,\"vehLocalization\":\"2\",\"vehicleColor\":\"A\",\"vehicleLength\":4.80,\"vehiclePlatePlace\":\"779,856,941,905\"," +
                 "\"vehicleShape\":\"05\",\"vehicleType\":\"K31\"}";
 
+        String pass_mess = "{\"addressDesc\":\"苏州路与铜陵路\",\"crossCode\":\"600090002000\",\"deviceNbr\":\"341100000074\",\"deviceSysNbr\":\"341100000000002375\"," +
+                "\"deviceType\":\"02\",\"directionName\":\"北\",\"directionType\":\"2\",\"districtCode\":\"341101\",\"dl\":\":1:东:11;:1:东:12;:2:南:21;:2:南:22;:3:西:31;:" +
+                "3:西:32;:4:北:41;:4:北:42\",\"image\":\"http://192.168.10.220:1800/PassImage.aspx?devicenbr=340100100417&snapnbr=20200510004854184&server=192.168.10.220&index=0\"," +
+                "\"imageUrlPath\":\"http://192.168.10.220:1800/PassImage.aspx?devicenbr=340100100417&snapnbr=20200510004854184&server=192.168.10.220&index=0\"," +
+                "\"lane\":\"42\",\"orgAuthorityCode\":\"3411\",\"orgCode\":\"341100000000\",\"passCanFlag\":\"1\",\"passTime\":1597283771039,\"plateColor\":\"2\"," +
+                "\"plateNbr\":\"皖MT15T7\",\"plateType\":\"02\",\"pulishTime\":1597283771039,\"roadCode\":\"60009\",\"roadName\":\"苏州路\",\"roadType\":\"6\"," +
+                "\"sectionId\":\"\",\"siteCode\":\"000030961500\",\"snapNbr\":\"20200813095611039\",\"speed\":1,\"vehicleShape\":\"02\",\"vioCanFlag\":\"1\"," +
+                "\"vioTimeHour\":0,\"vioTimeMinute\":0,\"vioTimeSecond\":0}";
+
         String pass = "its_pass_vehicle";
         String deviceStatus = "its_status_result_for_upgrade_changed";
 
-        Boolean b = MQGateWay.publish(deviceStatus, msg);
+        Boolean b = MQGateWay.publish(pass, pass_mess);
 
         System.out.println("发送成功 ==>" + b);
 
