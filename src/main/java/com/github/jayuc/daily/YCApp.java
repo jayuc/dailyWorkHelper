@@ -25,6 +25,7 @@ public class YCApp {
                     name + "','" + code + "000000','" + code + "'," + (isOrg?1:0) + "," + (index+1) + ")";
         }
     }
+    public static String path = "E:/code/project-documentation/合肥市烟草专卖局OA/合肥烟草员工数据(新整理)(1).xlsx";
     public static void main(String[] args) {
 
         String path = "F:/code/project-documentation/合肥市烟草专卖局OA/合肥烟草员工数据(新整理)(1).xlsx";
