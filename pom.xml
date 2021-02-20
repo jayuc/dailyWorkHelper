@@ -89,6 +89,12 @@
 			<optional>true</optional>
 		</dependency>
 
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
         <!-- 海康 open api 接口对接 -->
         <dependency>
             <groupId>com.hikvision.ga</groupId>
