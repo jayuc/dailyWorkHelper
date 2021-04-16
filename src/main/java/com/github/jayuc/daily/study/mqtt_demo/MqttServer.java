@@ -30,7 +30,7 @@ public class MqttServer {
             message.setRetained(false);
             long n = System.currentTimeMillis();
             String m = "{\"header\":{\"timeStamp\":\"" + n + "\"},\"payload\":{\"devices\":[{\"nodeid\":\"000\",\"action\":\"command\",\"params\":\"0110111100000000\"}]}}";
-            m = "11111111";
+            m = "0";
             message.setPayload(m.getBytes());
             client.connect(options);
 
